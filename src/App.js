@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Prop from './Prop';
+import './index.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+  state = {
+
   }
+    render() {
+      return (
+        <div className="App">
+          <p>Name </p>
+          <p>Is this really working</p>
+          <p>This is really working!</p>
+          <Prop name='Rigden' gender='boy'/>
+          <Prop name='Sonam' gender='boy'>Or is he?</Prop>
+          <Prop name='Dichen' gender='girl'/>
+        </div>
+      )
+    }
 }
 
 export default App;
