@@ -11,7 +11,8 @@ state = {
     {name: 'Sonam', gender: 'female'},
     {name: 'Tashi', gender: 'female'}
   ],
-  otherState: 'some other state'
+  otherState: 'some other state',
+  dataView: true
 }
 
 switchNameHandler = (newName) => {
@@ -26,31 +27,48 @@ switchNameHandler = (newName) => {
 }
 
 onChangeHandler = (event) => {
-  this.setState( {
+  this.setState({
     person: [ 
-      { name: 'Rigden', gender: 'male'  },
-      {name: 'Sonam', gender: 'female'},
-    {name: event.target.value, gender: 'female'}
+      {name: event.target.value, gender: 'male'},
+      {name: event.target.value, gender: 'female'},
+      {name: event.target.value, gender: 'female'}
     ],
     otherState: 'some other state'
   })
 }
 
+toggleDataHandler = () => {     
+    const dataView = this.state.dataView;
+    this.setState({dataView: !dataView})
+}
   render(){
       return (
         <div className="App">
-         <button onClick = {() => this.switchNameHandler('Dichen') }>Magic</button>
-          <p>Is this really working</p>
-          <p>This is really working!</p>
-          <Prop name={this.state.person[0].name}
-             gender={this.state.person[0].gender}
-             click={this.switchNameHandler.bind(this, 'Tashi')} >or is he?</Prop> 
-          <Prop name={this.state.person[1].name}
-             gender={this.state.person[1].gender}>Or is he?</Prop>
-          <Prop name={this.state.person[2].name}
-             gender={this.state.person[2].gender}
-             changed={this.onChangeHandler}/>
-          <Prop name={this.state.otherState} />
+         <button onClick = {this.toggleDataHandler}>Hide</button>
+          { this.state.dataView === true ?
+          
+          <div>
+            <p>Is this really working</p>
+            <p>This is really working!</p>
+            <Prop 
+              name={this.state.person[0].name}
+              gender={this.state.person[0].gender}
+              click={this.switchNameHandler.bind(this, 'Tashi')}
+              changed={this.onChangeHandler} >or is he?
+            </Prop> 
+            <Prop 
+              name={this.state.person[1].name}
+              gender={this.state.person[1].gender}
+              changed={this.onChangeHandler}>Or is he?
+            </Prop>
+            <Prop 
+              name={this.state.person[2].name}
+              gender={this.state.person[2].gender}
+              changed={this.onChangeHandler}/>
+            <Prop
+              name={this.state.otherState} />
+         </div>: null
+          }
         </div>
       )
   }
