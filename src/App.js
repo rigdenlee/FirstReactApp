@@ -78,15 +78,14 @@ persons = (
   if (this.state.persons.length <=1) {
     classes.push('bold');
   }
-
-      return (
+  return (
          <div className='App'>
           <h1>I'm an React App</h1>
-          <p  className={classes.join(' ')}>Is this really working?</p>
+          <p className={classes.join(' ')}>Is this really working?</p>
           <button style={style} onClick={this.togglePersonHandler}>Toggle Me</button>  
            {persons}         
          </div>
-       );
-    };
+  );
+  };
 }
 export default App;
